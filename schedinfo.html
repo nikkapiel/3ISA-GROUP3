@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Schedule Information</title>
+</head>
+
+<body>
+	<div class="schedinfo"><h2>Schedule Information</h2></div>
+	<div class="main">
+		
+		<form>
+			
+			<!--Client Information-->
+		<div class="client">
+			<h2><center>Client Information</center></h2>
+		<label class="clientname">Client Name</label>
+		<input class="name" type="text" name="clientname"><br>
+
+		<label class="couple">Couple</label>
+		<input class="couple" type="text" name="couple"><br>
+
+		<label class="bride">Bride's Name</label>
+		<input class="bride" type="text" name="bride"><br>
+
+		<label class="groom">Groom's Name</label>
+		<input class="groom" type="text" name="groom"><br>
+
+		<label class="contact">Contact Number</label>
+		<input class="contact" type="number" name="contactnumber"><br>
+
+		<label class="email">Email</label>
+		<input class="email" type="text" name="clientemail"><br>
+
+		</div>
+		<!--Location and Dates-->
+			<div class="locad">
+			<h2><center>Location and Dates</center></h2>
+				
+			<span>
+            <label for="day">Day:</label>
+            <select name="day" id="day"></select>
+        </span>
+        <span>
+            <label for="month">Month:</label>
+            <select name="month" id="month"></select>
+        </span>
+        <span>
+            <label for="year">Year:</label>
+            <select name="year" id="year">Year:</select>
+        </span><br>
+
+				
+		<label for="appt">Choose a time for your appointment:</label><br>
+
+		<input type="time" id="appt" name="appt"
+       min="1:00" max="12:00" required>		
+			
+		<div>
+		<label class="hotel">Hotel</label>
+		<input class="hotel" type="text" name="hotel"><br>
+
+		<label class="reception">Reception</label>
+		<input class="reception" type="text" name="reception"><br>
+
+		<label class="calltime">Calltime</label>
+		<input class="calltime" type="text" name="calltime"><br>
+				
+		</div>
+		</div>
+			
+			<!--Payment-->
+		
+			<div class="payment">
+			<h2><center>Payment</center></h2><br>
+
+			<label class="package">Package</label>
+			<input class="package" type="text" name="package"><br>
+
+			<label class="price">Price</label>
+			<input class="price" type="text" name="price"><br>
+
+			<label class="ootf">OOTF</label>
+			<input class="ootf" type="text" name="ootf"><br>
+
+			<label class="1stdp">1st Downpayment</label>
+			<input class="1stdp" type="text" name="1stdp"><br>
+
+			<label class="2nddp">2nd Downpayment</label>
+			<input class="2nddp" type="text" name="2nddp"><br>
+			
+			</div>
+			
+			<!--Team and Services-->
+			
+			<div class="team">
+				<h2><center>Team and Service</center></h2>
+				<label class="team">Team</label>
+			<input class="team" type="text" name="team"><br>
+
+			<label class="service">Service</label>
+			<input class="service" type="text" name="service"><br>
+			</div>
+			
+			
+			
+			
+		<div class="button">
+			
+		<button class="submit" type="submit"><a href=""></a>Submit</button>
+		<button class="button" type="reset"><a href=""></a>Cancel</button>
+		
+		</div>
+		</form>
+		</div>
+</body>
+</html>
