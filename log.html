@@ -3,35 +3,40 @@
 <head>
 <meta charset="utf-8">
 <title>Log In</title>
+<style>
+	body{
+		background-color: #80dbaf;
+	}
+
+	#email{
+		text-align: center;
+	}
+	#password{
+		text-align: center;
+	}
+</style>
 </head>
 
 <body>
-	<div class="login">
-		<h1><center>Owner Log In</center></h1>
-	</div>
-
-	<div class="main">
-		<form>
-			
-		<div id="email">
-			<h3 class="email">Email</h3>
-			<input class="email" type="text" name="email">
-			</div>
-			
-			<div id="password">
-			<h3 class="password">Password</h3>
-			<input class="password" type="password" name="password">
-			</div>
-			
-		<div class="button">
-			
-		<button class="button" type="submit"><a href="edit.html"></a>Log in</button>
-		<button class="button" type="reset"><a href="index.html"></a>Cancel</button>
-			
-		</div>	
-	
-		</form>	
-	</div>
-
+    <div id = "form">
+        <div id="content">
+            <div class="header">
+                <h1><center>Owner Log In</center></h1>
+            </div>
+            <div class="body">
+                <form>
+                    <div id="email">
+                        <h3 class="email">Email</h3> 
+                        <input class="email" type="text" name="email">
+                        <h3 class="password">Password</h3>
+                        <input class="password" type="password" name="password">
+                    <div id="footer">
+                        <button class="button" type="submit"><a href="edit.html"></a>Log in</button>
+                        <button class="button" type="reset"><a href="index.html"></a>Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
