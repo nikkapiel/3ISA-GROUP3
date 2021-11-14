@@ -1,117 +1,208 @@
-<!doctype html>
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+
+  <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Schedule Information</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: #80dbaf;
+}
+
+.topnav a {
+  float: left;
+  color: #278250;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav {
+  display: flex;
+  justify-content: center;
+}
+
+.book{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:40px; 
+    width: 170px; 
+    font-size: 20px;
+    margin-left: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.save{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:40px; 
+    width: 100px; 
+    font-size: 20px;
+    margin-left: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.edit{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:40px; 
+    width: 100px; 
+    font-size: 20px;
+    margin-left: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.booking{
+  position: absolute;
+  bottom: 55px; 
+  right: 205px;
+  font-family:'Times New Roman', Times, serif
+
+}
+
+.editing{
+  position: absolute;
+  bottom: 110px; 
+  right: 300px;
+  font-family:'Times New Roman', Times, serif
+  
+}
+
+.saving{
+  position: absolute;
+  bottom: 110px; 
+  right: 180px;
+  font-family:'Times New Roman', Times, serif
+
+}
+
+
+.book a:link {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+.book a:visited {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.book a:hover {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: 
+}
+
+.save a:link {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+.save a:visited {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.save a:hover {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: 
+}
+
+.edit a:link {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+.edit a:visited {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.edit a:hover {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: 
+}
+
+</style>
+  
+  <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
 </head>
 
 <body>
-	<div class="schedinfo"><h2>Schedule Information</h2></div>
-	<div class="main">
-		
-		<form>
-			
-			<!--Client Information-->
-		<div class="client">
-			<h2><center>Client Information</center></h2>
-		<label class="clientname">Client Name</label>
-		<input class="name" type="text" name="clientname"><br>
+  <head>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="topnav">
+    <a href="index.html">Homepage</a>
+    <a href="about.html">About Us</a>
+    <a href="packages.html">Packages</a>
+    <a class="active" href="calendar2.html">Calendar</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
 
-		<label class="couple">Couple</label>
-		<input class="couple" type="text" name="couple"><br>
+  <br> <br>
 
-		<label class="bride">Bride's Name</label>
-		<input class="bride" type="text" name="bride"><br>
+  <div id="calendar">
+    <div id="calendar_header"><i class="icon-chevron-left"></i>
+    <h1></h1><i class="icon-chevron-right"></i>
+  </div>
+    <div id="calendar_weekdays"></div>
+    <div id="calendar_content"></div>
+  </div>
+</body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-		<label class="groom">Groom's Name</label>
-		<input class="groom" type="text" name="groom"><br>
-
-		<label class="contact">Contact Number</label>
-		<input class="contact" type="number" name="contactnumber"><br>
-
-		<label class="email">Email</label>
-		<input class="email" type="text" name="clientemail"><br>
-
-		</div>
-		<!--Location and Dates-->
-			<div class="locad">
-			<h2><center>Location and Dates</center></h2>
-				
-			<span>
-            <label for="day">Day:</label>
-            <select name="day" id="day"></select>
-        </span>
-        <span>
-            <label for="month">Month:</label>
-            <select name="month" id="month"></select>
-        </span>
-        <span>
-            <label for="year">Year:</label>
-            <select name="year" id="year">Year:</select>
-        </span><br>
-
-				
-		<label for="appt">Choose a time for your appointment:</label><br>
-
-		<input type="time" id="appt" name="appt"
-       min="1:00" max="12:00" required>		
-			
-		<div>
-		<label class="hotel">Hotel</label>
-		<input class="hotel" type="text" name="hotel"><br>
-
-		<label class="reception">Reception</label>
-		<input class="reception" type="text" name="reception"><br>
-
-		<label class="calltime">Calltime</label>
-		<input class="calltime" type="text" name="calltime"><br>
-				
-		</div>
-		</div>
-			
-			<!--Payment-->
-		
-			<div class="payment">
-			<h2><center>Payment</center></h2><br>
-
-			<label class="package">Package</label>
-			<input class="package" type="text" name="package"><br>
-
-			<label class="price">Price</label>
-			<input class="price" type="text" name="price"><br>
-
-			<label class="ootf">OOTF</label>
-			<input class="ootf" type="text" name="ootf"><br>
-
-			<label class="1stdp">1st Downpayment</label>
-			<input class="1stdp" type="text" name="1stdp"><br>
-
-			<label class="2nddp">2nd Downpayment</label>
-			<input class="2nddp" type="text" name="2nddp"><br>
-			
-			</div>
-			
-			<!--Team and Services-->
-			
-			<div class="team">
-				<h2><center>Team and Service</center></h2>
-				<label class="team">Team</label>
-			<input class="team" type="text" name="team"><br>
-
-			<label class="service">Service</label>
-			<input class="service" type="text" name="service"><br>
-			</div>
-			
-			
-			
-			
-		<div class="button">
-			
-		<button class="submit" type="submit"><a href=""></a>Submit</button>
-		<button class="button" type="reset"><a href=""></a>Cancel</button>
-		
-		</div>
-		</form>
-		</div>
+    <script src="js/index.js"></script>
+    <div class=booking>
+      <button class="book" type="book" name="book" ><a href="https://docs.google.com/spreadsheets/d/1bW72T36EovpP7QOZLkFpl72D1wqvAIeZi8jOUIX8ig8/edit?usp=sharing" target="_blank">View Bookings</a></button>
+      </div>
+	  <div class=editing>
+		<button class="edit" type="edit" name="edit"><a href="appointment.html">Edit</a></button>
+	  </div>
+	  <div class=saving>
+		<button class="save" type="save" name="save"><a href="appointment.html">Save</a></button>
+	</div>
 </body>
 </html>

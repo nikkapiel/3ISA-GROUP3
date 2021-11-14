@@ -39,6 +39,46 @@
   justify-content: center;
 }
 
+.book{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:40px; 
+    width: 140px; 
+    font-size: 20px;
+    margin-left: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.booking{
+  position: absolute;
+  bottom: 55px; 
+  right: 200px;
+  font-family:'Times New Roman', Times, serif
+
+}
+
+.book a:link {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+.book a:visited {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.book a:hover {
+  color: #1f9d6c;
+  background-color: transparent;
+  text-decoration: 
+}
+
 </style>
   
   <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
@@ -74,8 +114,8 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
-
-    <a href="appointment.html">Book Now!</a>
-
+    <div class=booking>
+      <button class="book" type="book" name="book" ><a href="appointment.html">Book Now!</a></button>
+      </div>
 </body>
 </html>

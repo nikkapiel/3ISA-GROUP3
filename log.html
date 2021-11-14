@@ -23,7 +23,6 @@
 }
 
 .login{
-    
     font-family: 'brush script MT';
     padding:0px;
     font-size:80px;
@@ -69,6 +68,43 @@
     font-size: 20px;
     position: relative;
     margin-left: 120px;
+
+}
+
+.cancel a:link {
+  color:red;
+  background-color: transparent;
+  text-decoration: none;
+}
+.cancel a:visited {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.cancel a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: 
+}
+
+.button a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+.button a:visited {
+  color:green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.button a:hover {
+  color:green;
+  background-color: transparent;
+  text-decoration: 
+}
+
   
 </style>
 </head>
@@ -83,24 +119,41 @@
                 <form class="form">
                     <div class="email">
                         <label for="email" class="mail">Email:</label>
-                        <input class="textbox" type="text"> 
+                        <input class="textbox" type="text" size=25 name="userid" required> 
                         <br><br> 
                     </div>
                     <div class="pwd">
                         <label for="pwd" class='mail'>Password:</label>
-                        <input class="textbox" type="password"> 
+                        <input class="textbox" type="password" size=25 name="pwd" required> 
                         <br><br>
                     </div>
                     
                     <div id="footer">
-                        <button class="button" type="submit"><a href="edit.html"></a>Log in</button>
-                        <button class="cancel" type="reset"><a href="index.html"></a>Cancel</button>
+                        <form name="loginForm" method="post" action="login.php"></form>
+                        <button class="button" type="Login" name="Login" input type="submit" onclick="return check(this.form)" value="Login"><a href="schedinfo.html">Login</a></button>
+                        <button class="cancel" type="Cancel" name="Cancel" ><a href="index.html">Cancel</a></button>
+                        <script language="javascript">
+                            function check(form)
+                            {
+                            
+                            if(form.userid.value == "adminUser" && form.pwd.value == "After6ix2016")
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                alert("Incorrect Username or Password")
+                                return false;
+                            }
+                            }
+                            </script>
                     </div>
                   </form>
-                <h1><center>Owner Log In</center></h1>
             </div>
             </div>
         </div>
     </div>
+        
+        
 </body>
 </html>
