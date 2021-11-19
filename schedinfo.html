@@ -60,6 +60,49 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
+
+.submit {
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:20px; 
+    width: 100px; 
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.cancel{
+  background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:red; 
+    outline: none; 
+    height:20px; 
+    width: 100px; 
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: inline;
+
+}
+
+.set {
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color:#1f9d6c; 
+    outline: none; 
+    height:20px; 
+    width: 140px; 
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
 .topnav {
   overflow: hidden;
   background-color: #80dbaf;
@@ -104,60 +147,13 @@ body {
 
 }
 
-.save{
-    background: #f2eddb; 
-    border: 1px double #f2eddb; 
-    border-radius: 5px; 
-    box-shadow: 0 0 5px #f2eddb; 
-    color:#1f9d6c; 
-    outline: none; 
-    height:40px; 
-    width: 100px; 
-    font-size: 20px;
-    margin-left: 120px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-}
-
-.edit{
-    background: #f2eddb; 
-    border: 1px double #f2eddb; 
-    border-radius: 5px; 
-    box-shadow: 0 0 5px #f2eddb; 
-    color:#1f9d6c; 
-    outline: none; 
-    height:40px; 
-    width: 100px; 
-    font-size: 20px;
-    margin-left: 120px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-}
-
 .booking{
   position: absolute;
   bottom: 55px; 
-  right: 205px;
+  right: 130px;
   font-family:'Times New Roman', Times, serif
 
 }
-
-.editing{
-  position: absolute;
-  bottom: 110px; 
-  right: 300px;
-  font-family:'Times New Roman', Times, serif
-  
-}
-
-.saving{
-  position: absolute;
-  bottom: 110px; 
-  right: 180px;
-  font-family:'Times New Roman', Times, serif
-
-}
-
 
 .book a:link {
   color: #1f9d6c;
@@ -171,40 +167,6 @@ body {
 }
 
 .book a:hover {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: 
-}
-
-.save a:link {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: none;
-}
-.save a:visited {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.save a:hover {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: 
-}
-
-.edit a:link {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: none;
-}
-.edit a:visited {
-  color: #1f9d6c;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.edit a:hover {
   color: #1f9d6c;
   background-color: transparent;
   text-decoration: 
@@ -280,7 +242,9 @@ body {
 
   <div class="List">
         September 6, 2021 <span class="tab2"> Philip and Mai's Wedding
+          &nbsp &nbsp &nbsp <button class="cancel">Delete</button>
          </div>
+
          <br> <br> <br>
 
   <div class="event">
@@ -346,11 +310,27 @@ body {
     <div class=booking>
       <button class="book" type="book" name="book" ><a href="https://docs.google.com/spreadsheets/d/1bW72T36EovpP7QOZLkFpl72D1wqvAIeZi8jOUIX8ig8/edit?usp=sharing" target="_blank">View Bookings</a></button>
       </div>
-	  <div class=editing>
-		<button class="edit" type="edit" name="edit"><a href="appointment.html">Edit</a></button>
-	  </div>
-	  <div class=saving>
-		<button class="save" type="save" name="save"><a href="appointment.html">Save</a></button>
-	</div>
+	  
+  <br> <br> <br>
+  <div class="event">
+    <b>Add an Event</b>
+        </div>
+           <br>
+  
+<form class="List">
+  <label>Date:
+    <input class = "set" type="date" name="setDate" required pattern="\d{4}-\d{2}-\d{2}">
+    <span class="validity"></span>
+  </label>
+  <br> <br>
+  <label>Title:
+    <input class = "set" type="text" name="Title" required>
+    <span class="validity"></span>
+  </label>
+  <br><br>
+    <button class="submit">Submit</button> &nbsp
+    <button class="cancel">Cancel</button>
+</form>
+</head>
 </body>
 </html>
