@@ -169,7 +169,6 @@ body {
 .book a:hover {
   color: #1f9d6c;
   background-color: transparent;
-  text-decoration: 
 }
 
 .select-dropdown,
@@ -217,6 +216,28 @@ body {
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
+  /* [ADD] Few styles for available date container(.date-container),for the dates(.blocks) and info */
+  .date-container{
+  display: flex;
+  width: 50%;
+  height: wrap-content; 
+  margin-left: 30px;
+  gap: .5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.blocks{
+  flex: 1;
+  padding: .3rem;
+  background-color: #f2eddb;
+  border-radius: 3px;
+  color: white;
+}
+#info-text{
+  margin-left: 30px;
+  color: #1f9d6c;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
 </style>
 <body>
   <div class="topnav">
@@ -257,56 +278,61 @@ body {
     <button class="book" type="book" name="book" ><a href="appointment.html">Book Now!</a></button>
     </div>
 
-    <div class = "select-dropdown">
-    <select name="year" id="year" required>
-        <option value="">Select Year</option>
-    </select>
-  </div>
-    
-    <script type="text/javascript">
-      for(y = 2021; y <= 2099; y++) {
-              var optn = document.createElement("OPTION");
-              optn.text = y;
-              optn.value = y;
-              
-              // if year is 2015 selected
-              if (y == 2015) {
-                  optn.selected = true;
-              }
-              
-              document.getElementById('year').options.add(optn);
-      }
-      </script>
-
-     
-    <div class = "select-dropdown">
-      <select class="form-control" name="month" id="selectMonth" required>
-        <option value="default">Select Month</option>
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-      </select>
+    <form id="form">
+      <div class="select-dropdown">
+        <select name="year" id="year" required>
+          <option value="default" disabled selected>Select Year</option>
+        </select>
       </div>
-      
+    
+      <!-- [FIX] changed year to current date's year for dynamic result-->
+      <script type="text/javascript">
+        let yearNow = new Date().getFullYear(); // <-- current year
+        for (y = yearNow; y <= 2099; y++) {
+          var optn = document.createElement("OPTION");
+          optn.text = y;
+          optn.value = y;
+    
+          // removed the if-else here
+    
+          document.getElementById('year').options.add(optn);
+        }
+      </script>
+    
+    
+      <div class="select-dropdown">
+        <select class="form-control" name="month" id="month" required>
+          <option value="default" disabled selected>Select Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </div>
+    
       <br>
-        <button class="check" type="submit" name="check" class="btn btn-outline-dark mt-2 w-100">Check</button>
-    </form>
-    <div class="container" id="available-dates-container">
-    </div>  
+      <button class="check" type="submit" name="check">Check</button>
+      </form>
+      
+      <!-- [ADD] info-text -->
+        <p id="info-text"></p> 
+        
+        <!--[FIX] Available date container -->
+        <div class="date-container" id="available-dates-container">
+            
+        </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script defer src="js/calendar.js"></script>
 
-    <script src="js/index.js"></script>
     <div class=booking>
       <button class="book" type="book" name="book" ><a href="https://docs.google.com/spreadsheets/d/1bW72T36EovpP7QOZLkFpl72D1wqvAIeZi8jOUIX8ig8/edit?usp=sharing" target="_blank">View Bookings</a></button>
       </div>
