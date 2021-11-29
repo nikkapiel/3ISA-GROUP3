@@ -85,7 +85,6 @@
 .cancel a:hover {
   color: red;
   background-color: transparent;
-  text-decoration: 
 }
 
 .button a:link {
@@ -102,7 +101,6 @@
 .button a:hover {
   color:green;
   background-color: transparent;
-  text-decoration: 
 }
 
   
@@ -116,37 +114,21 @@
                 <h1 class="login"><center>Owner Login</center></h1>
             </div>
             <div class="body">
-                <form class="form">
+                <form class="form" id="login-form">
                     <div class="email">
                         <label for="email" class="mail">Email:</label>
-                        <input class="textbox" type="text" size=25 name="userid" required> 
+                        <input class="textbox" type="text" size=25 name="username" required> 
                         <br><br> 
                     </div>
                     <div class="pwd">
                         <label for="pwd" class='mail'>Password:</label>
-                        <input class="textbox" type="password" size=25 name="pwd" required> 
+                        <input class="textbox" type="password" size=25 name="password" required> 
                         <br><br>
                     </div>
                     
                     <div id="footer">
-                        <form name="loginForm" method="post" action="login.php"></form>
-                        <button class="button" type="Login" name="Login" input type="submit" onclick="return check(this.form)" value="Login"><a href="schedinfo.html">Login</a></button>
-                        <button class="cancel" type="Cancel" name="Cancel" ><a href="index.html">Cancel</a></button>
-                        <script language="javascript">
-                            function check(form)
-                            {
-                            
-                            if(form.userid.value == "adminUser" && form.pwd.value == "After6ix2016")
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                alert("Incorrect Username or Password")
-                                return false;
-                            }
-                            }
-                            </script>
+                        <button class="button" type="submit" name="Login">Login</button>
+                        <button class="cancel" type="Cancel" name="Cancel" ><a href="./index.html">Cancel</a></button>
                     </div>
                   </form>
             </div>
@@ -154,6 +136,7 @@
         </div>
     </div>
         
-        
+        <script defer src="./js/auth.js"></script>
+        <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

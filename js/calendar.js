@@ -1,144 +1,220 @@
-let info = document.querySelector("#info-text");
-
-class ManageDates {
-  constructor(year, month) {
-    this.year = year;
-    this.month = month;
-
-    let getMonthNumber = (month = this.month) => {
-      const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-      return months.indexOf(month) + 1;
-    };
-    this.getAllDays = (year = this.year, month = this.month) => {
-      const monthNumber = getMonthNumber();
-      const dateInput = new Date(year, monthNumber, 0);
-      return dateInput.getDate();
-    };
-
-    this.getDateArray = (year = this.year, month = this.month) => {
-      month = getMonthNumber(month);
-      const days = this.getAllDays(year, month);
-      const dateArray = [];
-
-      for (let i = 1; i <= days; i++) {
-        const date = new Date(year, month - 1, i);
-        dateArray.push(date);
-      }
-      return dateArray;
-    };
-    this.getAvailableDays = function (
-      occupied,
-      year = this.year,
-      month = this.month
-    ) {
-      month = getMonthNumber(month);
-      const occupiedDays = occupied.map((date) => new Date(date).getDate());
-      const availableDays = this.getDateArray();
-      console.log(occupiedDays);
-      return availableDays.filter((date) => {
-        return !occupiedDays.includes(new Date(date).getDate());
-      });
-    };
-  }
-}
-
 class myCollection {
   constructor() {
     let data = [];
+    let message = "";
+    let booking = Object;
 
-    this.getData = () => {
-      return data;
-    };
-    this.setData = (newData) => {
-      data = newData;
-    };
+    this.setData = (newData) => (data = newData);
+    this.getData = (_) => data;
+
+    this.setMessage = (s) => (message = s);
+    this.getMessage = (_) => message;
+
+    this.setBooking = (book) => (booking = book);
+    this.getBooking = (_) => booking;
   }
 }
+const DOMElements = {
+  titleInfo: document.querySelector("#title-info"),
+  dateInfo: document.querySelector("#date-info"),
+  add_del_form: document.querySelector("#add-date-form"),
+  add_del_addBtn: document.querySelector(".submit"),
+  add_del_delBtn: document.querySelector(".cancel"),
+  add_del_date: document.querySelector("#setDate"),
+  add_del_title: document.querySelector("#setTitle"),
+  findInfo: document.querySelector("#info-text"),
+  findForm: document.querySelector("#form"),
+  findYear: document.querySelector("#year"),
+  findMonth: document.querySelector("#month"),
+  findContainer: document.querySelector("#available-dates-container"),
+};
+
+const { findForm, findYear, findMonth, findInfo, findContainer } = DOMElements; // for Finding available dates
+const {
+  add_del_form,
+  add_del_date,
+  add_del_title,
+  add_del_addBtn,
+  add_del_delBtn,
+} = DOMElements;
+
+const {
+  titleInfo,
+  dateInfo
+} = DOMElements;
+
 const collection = new myCollection();
-const form = document.querySelector("#form");
+
+let protocol = window.location.protocol;
+let host = window.location.host;
+const bookingURL = `${protocol}//${host}/booking`
 
 const fetchExactData = async (year, month, callback) => {
-  const url = "https://618f0ee950e24d0017ce1577.mockapi.io/date";
+  const url = `${bookingURL}/available/${year}/${month}`;
   try {
     await axios
       .get(url)
       .then((res) => res.data)
-      .then((data) => {
-        const filtered = data
-          .map((item) => item.date)
-          .filter((date) => {
-            const yyyy = new Date(date).getFullYear().toString();
-            const MM = new Date(date).toLocaleDateString("default", {
-              month: "long",
-            });
-
-            if (yyyy === year && MM === month) {
-              return date;
-            }
-          });
-
-        collection.setData(filtered);
+      .then((data) => data.result)
+      .then((dates) => {
+        const { data, message } = dates;
+        collection.setData(data);
+        collection.setMessage(message);
+        return message;
       })
-      .then(() => callback(year, month))
+      .then((message) => {
+        displayInfoMessage(message);
+        callback(year, month);
+      })
       .catch((e) => {
-        console.log(e);
+        throw e;
       });
   } catch (error) {
-    console.log(error);
+    alert(error);
   }
 };
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+const displayInfoMessage = (message) => {
+  return (findInfo.innerText = message);
+};
 
-  const year = document.querySelector("#year").value;
-  const month = document.querySelector("#month").value;
-  
-  if(year === 'default' || month === 'default') return info.innerText = 'Please select date properly.';
-
-  await fetchExactData(year, month, generateAvailableDates);
-});
-
-
-
-
-function generateAvailableDates(year, month) {
-  const container = document.querySelector("#available-dates-container");
-  container.innerHTML = "";
+function displayResults(year, month) {
+  findContainer.innerHTML = "";
   const data = collection.getData();
-
-  const manageDates = new ManageDates(year, month);
-  const availableDays = manageDates.getAvailableDays(data);
-
-  const totalDays = manageDates.getAllDays();
-
-  if (totalDays === availableDays.length) {
-    return info.innerText = `All dates are available for ${month} ${year}.`;
-  }
-  if (availableDays.length === 0) {
-    return info.innerText = `No available dates for ${month} ${year}.`;
-  }
-  
-  info.innerText = `Available dates for ${month} ${year}.`;
-  availableDays.forEach((item) => {
+  data.forEach((item) => {
     const dateElement = document.createElement("span");
     dateElement.classList.add("blocks");
     dateElement.innerHTML = new Date(item).toLocaleDateString("en-PH", {
       day: "numeric",
-    });  
-    container.appendChild(dateElement);
+    });
+    findContainer.appendChild(dateElement);
   });
 }
+
+findForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const year = findYear.value;
+  const month = findMonth.value;
+  await fetchExactData(year, month, displayResults);
+});
+
+// For adding and deleting event
+
+const checkExact = async (date, callback) => {
+  const url = `${bookingURL}/check/${date}`;
+  try {
+    await axios
+      .get(url)
+      .then((res) => res.data)
+      .then((result) => {
+        collection.setBooking(result.data);
+        return result.status;
+      })
+      .then((status) => callback(status))
+      .catch((e) => {
+        throw e;
+      });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const addEvent = async (date, title, callback) => {
+  const data = {
+    date,
+    title,
+  };
+  const url = `${bookingURL}/add`;
+  try {
+    await axios
+      .post(url, data)
+      .then((res) => callback(res.data))
+      .catch((e) => {
+        throw e;
+      });
+  } catch (error) {
+    if(error.response.status === 400) {
+      return alert("This date is already occupied");
+    }
+    alert(error);
+  }
+};
+const delEvent = async (date, callback) => {
+  const url = `${bookingURL}/delete/${date}`;
+  try {
+    await axios
+      .delete(url)
+      .then((res) => callback(res.data))
+      .catch((e) => {
+        throw e;
+      });
+  } catch (error) {
+    alert(error);
+  }
+};
+
+const verifyDate = async (d) => {
+  add_del_title.value = "";
+  add_del_addBtn.setAttribute("disabled", "yes");
+  add_del_delBtn.setAttribute("disabled", "yes");
+
+  const date = d || add_del_date.value;
+  await checkExact(date, activateButton);
+}
+
+const activateButton = (status) => {
+  if (status) {
+    // if occupied
+    const booking = collection.getBooking();
+    titleInfo.innerText = booking.title;
+    dateInfo.innerText = new Date(booking.date).toLocaleDateString('default', {
+      day: "numeric",
+      year: "numeric",
+      month: "long"
+    })
+    add_del_title.value = booking.title;
+    add_del_title.setAttribute("readonly", "yes");
+    add_del_addBtn.setAttribute("disabled", "yes");
+    return add_del_delBtn.removeAttribute("disabled");
+  }
+
+  // if not occupied
+  add_del_title.value = "";
+  add_del_title.removeAttribute("readonly");
+  add_del_delBtn.setAttribute("disabled", "yes");
+  return add_del_addBtn.removeAttribute("disabled");
+};
+
+add_del_date.addEventListener("change", async () => {
+  await verifyDate();
+});
+
+add_del_form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const date = add_del_date.value,
+    title = add_del_title.value;
+
+  await addEvent(date, title, (res) => {
+    const event = res.data;
+    const date = new Date(event.date).toLocaleDateString('default', { day: "numeric", year: "numeric", month: "long" });
+    alert(`${event.title} has been added to ${date}`);
+    add_del_form.reset();
+    activateButton(false);
+  });
+});
+
+add_del_delBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const date = add_del_date.value;
+  if(confirm("Are you sure you want to remove this event?")){
+    await delEvent(date, (res)=>{
+      const event = res.data;
+      const date = new Date(event.date).toLocaleDateString('default', { day: "numeric", year: "numeric", month: "long" });
+      alert(`Event for ${date}:${event.title} has been removed.`);
+      add_del_form.reset();
+      activateButton(false);
+    });
+  }
+});
