@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Log In</title>
+
+<style>
+
+	body{
+		background-color: #80dbaf;
+        position: relative;
+        margin-top: 150px;
+        color:white;
+	}
+
+.form{
+        text-align: center;
+        font-size: 30px;
+        text-align:center;
+}
+.email{
+        text-indent: 42px;
+}
+
+.login{
+    font-family: 'brush script MT';
+    padding:0px;
+    font-size:80px;
+    text-indent: 130px;
+}
+
+.textbox{
+	background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color: #897159; 
+    outline: none; 
+    height:50px; 
+    width: 350px; 
+    font-size: 20px;
+
+}
+
+.button{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color: green; 
+    outline: none; 
+    height:50px; 
+    width: 120px; 
+    font-size: 20px;
+    margin-left: 120px;
+    
+
+}
+.cancel{
+    background: #f2eddb; 
+    border: 1px double #f2eddb; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #f2eddb; 
+    color: red;
+    outline: none; 
+    height:50px; 
+    width: 120px; 
+    font-size: 20px;
+    position: relative;
+    margin-left: 120px;
+
+}
+
+.cancel a:link {
+  color:red;
+  background-color: transparent;
+  text-decoration: none;
+}
+.cancel a:visited {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.cancel a:hover {
+  color: red;
+  background-color: transparent;
+}
+
+.button a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+.button a:visited {
+  color:green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.button a:hover {
+  color:green;
+  background-color: transparent;
+}
+
+  
+</style>
+</head>
+
+<body>
+    <div id = "form">
+        <div id="content">
+            <div class="header">
+                <h1 class="login"><center>Owner Login</center></h1>
+            </div>
+            <div class="body">
+                <form class="form" id="login-form">
+                    <div class="email">
+                        <label for="email" class="mail">Email:</label>
+                        <input class="textbox" type="text" size=25 name="username" required> 
+                        <br><br> 
+                    </div>
+                    <div class="pwd">
+                        <label for="pwd" class='mail'>Password:</label>
+                        <input class="textbox" type="password" size=25 name="password" required> 
+                        <br><br>
+                    </div>
+                    
+                    <div id="footer">
+                        <button class="button" type="submit" name="Login">Login</button>
+                        <button class="cancel" type="Cancel" name="Cancel" ><a href="./index.html">Cancel</a></button>
+                    </div>
+                  </form>
+            </div>
+            </div>
+        </div>
+    </div>
+        
+        <script defer src="./js/auth.js"></script>
+        <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
