@@ -6,10 +6,10 @@
 <style>
  
 body {
-	background-image: url('Homepage.png');
+	background-image: url('images/Homepage.png');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-  	background-size: cover;
+  background-size: cover;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -41,18 +41,54 @@ body {
 .topnav {
   display: flex;
   justify-content: center;
+}
 
+.login{
+  position: absolute;
+  bottom: 50px; 
+  right: 110px;
+  font-family:'Times New Roman', Times, serif
+
+}
+
+.login a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+.login a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.login a:hover {
+  color: white;
+  background-color: transparent;
+}
+
+hr.new1 {
+  border: .5px solid white;
+  width:190%;
+  text-align:left;
+  margin-left:0;
+}
 </style>
 </head>
 <body>
 
 <div class="topnav">
-  <a class="active" href="index.html">Homepage</a>
-  <a href="about.html">About Us</a>
-  <a href="packages.html">Packages</a>
-  <a href="calendar2.html">Calendar</a>
-  <a href="contact.html">Contact Us</a>
+  <a class="active" href="./index.html">Homepage</a>
+  <a href="./about.html">About Us</a>
+  <a href="./packages.html">Packages</a>
+  <a href="./calendar2.html">Calendar</a>
+  <a href="./contact.html">Contact Us</a>
 </div>
+
+<div class="login">
+ <b><a href="./log.html">LOG IN AS <br>OWNER</a></button></b>
+ <hr class="new1">
+  </div>
 
 </body>
 </html>
