@@ -30,16 +30,36 @@ app.use('/admin', require('./routes/Admin.route'));
 // serve the frontend
 // 
 app.use(express.static(path.join(__dirname,'client')));
-
-app.get('/*', (req,res)=>{
+app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, 'client','index.html'));
+})  
+app.get('/about', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','about.html'));
+})  
+app.get('/packages', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','packages.html'));
+})  
+app.get('/calendar', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','calendar2.html'));
+})  
+app.get('/appointment', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','appointment.html'));
+})  
+app.get('/contact', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','contact.html'));
+})  
+app.get('/owner/login', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','log.html'));
+})  
+app.get('/owner/schedInfo', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client','schedinfo.html'));
 })  
 // //
 
 const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(Server running on port ${PORT});
 });
 // connect to database
 connectToDB();
@@ -54,4 +74,3 @@ process.on('unhandledRejection', (err) => {
         process.exit(1);
     });
 });
-
