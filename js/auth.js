@@ -18,7 +18,7 @@ const login = async (username, password) => {
       .then((data) => {
         const token = data.accessToken;
         localStorage.setItem("token", token);
-        window.location.href = `./schedinfo.html`;
+        window.location.href = `/owner/schedInfo`;
       })
       .catch((e) => {
         throw e;

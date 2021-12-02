@@ -35,7 +35,7 @@
     }
 
     .tab {
-      padding-left: 218px;
+      padding-left: 250px;
     }
 
     .tab2 {
@@ -235,11 +235,11 @@
   </style>
   <body>
     <div class="topnav">
-      <a href="./index.html">Homepage</a>
-      <a href="./about.html">About Us</a>
-      <a href="./packages.html">Packages</a>
-      <a class="active" href="./calendar2.html">Calendar</a>
-      <a href="./contact.html">Contact Us</a>
+      <a href="/">Homepage</a>
+      <a href="/about">About Us</a>
+      <a href="/packages">Packages</a>
+      <a class="active" href="/calendar">Calendar</a>
+      <a href="/contact">Contact Us</a>
     </div>
 
     <br />
@@ -272,7 +272,7 @@
 
     <div class="booking">
       <button class="book" type="book" name="book">
-        <a href="./appointment.html">Book Now!</a>
+        <a href="/appointment">Book Now!</a>
       </button>
     </div>
 
@@ -326,7 +326,7 @@
     <div class="date-container" id="available-dates-container"></div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script defer src="./js/calendar.js"></script>
+    <script defer src="../js/calendar.js"></script>
 
     <div class="booking">
       <button class="book" type="book" name="book">
@@ -370,7 +370,7 @@
       <button type="submit" class="submit" disabled="yes">Submit</button> &nbsp
       <button class="cancel" disabled="yes">Delete</button>
     </form>
-    <script defer src="./js/auth.js"></script>
+    <script defer src="../js/auth.js"></script>
     <script>
       window.addEventListener("load", async () => {
         await authenticated();
